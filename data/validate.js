@@ -9,4 +9,14 @@ function isValidId(x) {
 	return maybeId >= 0
 }
 
-export { isValidId }
+function findMaxId(list) {
+	let maxId = 0;
+	for (const item of list) {
+		if (item.id && item.id > maxId) {
+			maxId = item.id;
+		}
+	}
+	return maxId;
+}
+
+export { isValidId, findMaxId }
