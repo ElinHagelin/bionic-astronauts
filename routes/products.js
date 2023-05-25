@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
 		maybeProduct.id = findMaxId(db.data.products) + 1
 		db.data.products.push(maybeProduct)
 		await db.write()
-		res.status(200).send({ id: maybeProduct.id })
+		res.send({ id: maybeProduct.id })
 
 	} else {
 		console.log('Felsöker POST: invalid')
