@@ -1,6 +1,6 @@
 import express from 'express'
 import { getDb } from '../data/database.js'
-import { isValidId } from '../data/validate.js'
+import { findMaxId, isValidId, isValidProduct } from '../data/validate.js'
 
 const router = express.Router()
 const db = getDb()
@@ -28,6 +28,26 @@ router.get('/:id', async (req, res) => {
 	}
 
 	res.send(maybeProduct)
+})
+
+
+router.post('/', async (req, res) => {
+	let maybeProduct = req.body
+	console.log('Felsöker POST: maybe=', maybeProduct)
+
+
+	if (isValidProduct(maybeProduct)) {
+		console.log('Felsöker POST: is valid')
+		await db.read()
+		maybeProduct.id = findMaxId(db.data.product) + 1
+		db.data.product.push(maybeProduct)
+		await db.write()
+		res.status(200).send({ id: maybeProduct.id })
+
+	} else {
+		console.log('Felsöker POST: invalid')
+		res.sendStatus(400)
+	}
 })
 
 export default router
