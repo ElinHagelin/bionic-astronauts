@@ -155,4 +155,4 @@ function isValidSearch(string) {
 	}
 }
 
-export { isValidId, findMaxId, isValidProduct, hasId, isValidSearch }
+export { isValidId, findMaxId, isValidProduct, hasId, isValidSearch, isValidUser }
