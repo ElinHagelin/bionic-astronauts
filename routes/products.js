@@ -1,6 +1,6 @@
 import express from 'express'
 import { getDb } from '../data/database.js'
-import { findMaxId, isValidId, isValidProduct, hasId } from '../data/validate.js'
+import { findMaxId, isValidId, isValidProduct, hasId, isValidSearch } from '../data/validate.js'
 
 const router = express.Router()
 const db = getDb()
@@ -98,6 +98,23 @@ router.put('/:id', async (req, res) => {
 	db.data.products[oldProductIndex] = newProduct
 	await db.write()
 	res.sendStatus(200)
+})
+
+// Sök-funktion
+router.get('/search/:string', async (req, res) => {
+	let string = req.params.string
+
+	if (isValidSearch(string) === false) {
+		res.sendStatus(400)
+		return
+	}
+
+	if(isValidSearch(string) === true) {
+		await db.read()
+		let foundProducts = await db.data.products.filter(products => products.name.toLowerCase().includes(string.toLowerCase()))
+		res.status(200).send(console.log(foundProducts))
+		return
+	}
 })
 
 export default router
