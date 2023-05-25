@@ -1,5 +1,5 @@
 {
-	"product": [
+	"products": [
 		{
 			"id": 1,
 			"name": "Klassisk Analog Klocka",
@@ -220,6 +220,18 @@
 				"multifunktion"
 			],
 			"description": "En mångsidig digital klocka med alarm, timer och kalenderfunktioner."
+		},
+		{
+			"name": "Elegant Kvinnlig Armbandsklocka",
+			"price": 599,
+			"image": "https://img01.ztat.net/article/spp-media-p1/a7b6e26958a04ea98ca8f5cec53f9a92/058adf7e867c4ca69efd1e866fabb1ee.jpg?imwidth=1800&filter=packshot",
+			"tags": [
+				"analog",
+				"elegant",
+				"kvinnlig"
+			],
+			"description": "En elegant och stilfull armbandsklocka för kvinnor. Den har en silverfärgad urtavla med detaljer i roséguld och en stilren rem i rostfritt stål.",
+			"id": 21
 		}
 	],
 	"user": [

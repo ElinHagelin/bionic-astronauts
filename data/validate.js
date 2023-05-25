@@ -1,6 +1,6 @@
 
 function isValidProduct(p) {
-	// console.log('isValidProduct 1');
+	console.log('isValidProduct 1');
 
 	if ((typeof p) !== 'object') {
 		return false
@@ -8,7 +8,7 @@ function isValidProduct(p) {
 		return false
 	}
 
-	// console.log('isValidProduct 2');
+	console.log('isValidProduct 2');
 
 
 	let nameIsValid = (typeof p.name) === 'string'
@@ -19,14 +19,16 @@ function isValidProduct(p) {
 	imageIsValid = imageIsValid && p.image !== ''
 	let descriptionIsValid = (typeof p.description) === 'string'
 	descriptionIsValid = descriptionIsValid && p.description !== ''
-	let tagsAreValid = (p.tags.isArray)
+	let tagsAreValid = (Array.isArray(p.tags))
+
+	console.log('tagsAreValid är: ', tagsAreValid);
 
 
 	if (!nameIsValid || !priceIsValid || !imageIsValid || !descriptionIsValid || !tagsAreValid) {
 		return false
 	}
 
-	// console.log('isValidProduct 3');
+	console.log('isValidProduct 3');
 	return true
 }
 

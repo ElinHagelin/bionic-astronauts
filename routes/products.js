@@ -8,7 +8,7 @@ const db = getDb()
 router.get('/', async (req, res) => {
 	console.log('GET/ products');
 	await db.read()
-	res.send(db.data.product)
+	res.send(db.data.products)
 })
 
 
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
 	let id = Number(req.params.id)
 
 	await db.read()
-	let maybeProduct = db.data.product.find(product => product.id === id)
+	let maybeProduct = db.data.products.find(product => product.id === id)
 	if (!maybeProduct) {
 		res.sendStatus(404)
 		return
@@ -39,8 +39,8 @@ router.post('/', async (req, res) => {
 	if (isValidProduct(maybeProduct)) {
 		console.log('Felsöker POST: is valid')
 		await db.read()
-		maybeProduct.id = findMaxId(db.data.product) + 1
-		db.data.product.push(maybeProduct)
+		maybeProduct.id = findMaxId(db.data.products) + 1
+		db.data.products.push(maybeProduct)
 		await db.write()
 		res.status(200).send({ id: maybeProduct.id })
 
@@ -48,6 +48,27 @@ router.post('/', async (req, res) => {
 		console.log('Felsöker POST: invalid')
 		res.sendStatus(400)
 	}
+})
+
+
+router.delete('/:id', async (req, res) => {
+
+	if (!isValidId(req.params.id)) {
+		res.sendStatus(400)
+		return
+	}
+	let id = Number(req.params.id)
+
+	await db.read()
+	let maybeProduct = db.data.products.find(product => product.id === id)
+	if (!maybeProduct) {
+		res.sendStatus(404)
+		return
+	}
+
+	db.data.products = db.data.products.filter(product => product.id !== id)
+	await db.write()
+	res.sendStatus(200)
 })
 
 export default router
