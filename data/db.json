@@ -222,15 +222,15 @@
 			"description": "En mångsidig digital klocka med alarm, timer och kalenderfunktioner."
 		},
 		{
-			"name": "Elegant Kvinnlig Armbandsklocka",
+			"name": "Sportig Digital Klocka",
 			"price": 599,
-			"image": "https://img01.ztat.net/article/spp-media-p1/a7b6e26958a04ea98ca8f5cec53f9a92/058adf7e867c4ca69efd1e866fabb1ee.jpg?imwidth=1800&filter=packshot",
+			"image": "https://cdn.example.com/img/2023/05/sporty-digital-watch-black-red-42mm.jpg",
 			"tags": [
-				"analog",
-				"elegant",
-				"kvinnlig"
+				"digital",
+				"klocka",
+				"sportig"
 			],
-			"description": "En elegant och stilfull armbandsklocka för kvinnor. Den har en silverfärgad urtavla med detaljer i roséguld och en stilren rem i rostfritt stål.",
+			"description": "bla bla bla",
 			"id": 21
 		}
 	],

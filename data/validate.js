@@ -41,6 +41,13 @@ function isValidId(x) {
 	return maybeId >= 0
 }
 
+function hasId(object) {
+	let idIsValid = (typeof object.id) === 'number'
+	idIsValid = idIsValid && object.id >= 0
+	return idIsValid
+}
+
+
 function findMaxId(list) {
 	let maxId = 0;
 	for (const item of list) {
@@ -51,4 +58,4 @@ function findMaxId(list) {
 	return maxId;
 }
 
-export { isValidId, findMaxId, isValidProduct }
+export { isValidId, findMaxId, isValidProduct, hasId }

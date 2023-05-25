@@ -1,6 +1,6 @@
 import express from 'express'
 import { getDb } from '../data/database.js'
-import { findMaxId, isValidId, isValidProduct } from '../data/validate.js'
+import { findMaxId, isValidId, isValidProduct, hasId } from '../data/validate.js'
 
 const router = express.Router()
 const db = getDb()
@@ -67,6 +67,35 @@ router.delete('/:id', async (req, res) => {
 	}
 
 	db.data.products = db.data.products.filter(product => product.id !== id)
+	await db.write()
+	res.sendStatus(200)
+})
+
+
+router.put('/:id', async (req, res) => {
+
+	if (!isValidId(req.params.id)) {
+		res.sendStatus(400)
+		return
+	}
+	let id = Number(req.params.id)
+
+
+	if (!isValidProduct(req.body)) {
+		res.sendStatus(400)
+		return
+	}
+	// || !hasId(req.body)
+	let newProduct = req.body
+
+	await db.read()
+	let oldProductIndex = db.data.products.findIndex(product => product.id === id)
+	if (oldProductIndex === -1) {
+		res.sendStatus(404)
+		return
+	}
+	newProduct.id = id
+	db.data.products[oldProductIndex] = newProduct
 	await db.write()
 	res.sendStatus(200)
 })
