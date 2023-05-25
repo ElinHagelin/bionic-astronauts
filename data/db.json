@@ -1,0 +1,242 @@
+{
+	"product": [
+		{
+			"id": 1,
+			"name": "Klassisk Analog Klocka",
+			"price": 499,
+			"image": "https://cdn.northbond.com/img/2018/06/sail-watch-brown-rose-gold-40mm-768x960.jpg",
+			"tags": [
+				"analog",
+				"tidlös"
+			],
+			"description": "En elegant och klassisk analog klocka i rostfritt stål."
+		},
+		{
+			"id": 2,
+			"name": "Digital Sportklocka",
+			"price": 799,
+			"image": "https://sportsbuddy.se/cache/2/0/7/6/9/5/3/sportsbuddy-vision-v1--svart-fit-450x450x100.webp",
+			"tags": [
+				"digital",
+				"sport"
+			],
+			"description": "En funktionell och vattentät sportklocka med digital display."
+		},
+		{
+			"id": 3,
+			"name": "Smartklocka med Pulsmätare",
+			"price": 1499,
+			"image": "https://media.inf.se/139994-large_default/aktivitetsarmband-med-blodtryck-hjrtfrekvensmtare.jpg",
+			"tags": [
+				"smartklocka",
+				"pulsmätare"
+			],
+			"description": "En avancerad smartklocka med inbyggd pulsmätare och anslutningsmöjligheter till din smartphone."
+		},
+		{
+			"id": 4,
+			"name": "Klassisk Guldklocka",
+			"price": 2999,
+			"image": "https://img01.ztat.net/article/spp-media-p1/85a7acb171cf436aa79f088d50346a68/f657d8e932aa47178b5a6a90b9f172f0.jpg?imwidth=1800&filter=packshot",
+			"tags": [
+				"analog",
+				"lyx"
+			],
+			"description": "En exklusiv guldklocka med automatiskt urverk och tidlös design."
+		},
+		{
+			"id": 5,
+			"name": "Digital Klocka med Stoppur",
+			"price": 599,
+			"image": "https://www.24.se/pub_images/original/88251.jpg",
+			"tags": [
+				"digital",
+				"stoppur"
+			],
+			"description": "En praktisk digital klocka med stoppur och alarmfunktion."
+		},
+		{
+			"id": 6,
+			"name": "Smartklocka med GPS",
+			"price": 1999,
+			"image": "https://m.media-amazon.com/images/I/61OQK-3MfLL._AC_UF1000,1000_QL80_.jpg",
+			"tags": [
+				"smartklocka",
+				"gps"
+			],
+			"description": "En smartklocka med inbyggd GPS för träning och navigation."
+		},
+		{
+			"id": 7,
+			"name": "Retro Analog Klocka",
+			"price": 699,
+			"image": "https://uropenn.se/thumb/21631/1024x0/R38297-416.webp",
+			"tags": [
+				"analog",
+				"retro"
+			],
+			"description": "En trendig retroklocka med läderarmband och klassisk design."
+		},
+		{
+			"id": 8,
+			"name": "Digital Barnklocka",
+			"price": 299,
+			"image": "https://cdn.cdon.com/media-dynamic/images/product/clothing/clothing/image541/digital_barnklocka_sportklocka_-_klocka-46069325-57761107-org.jpg",
+			"tags": [
+				"digital",
+				"barn"
+			],
+			"description": "En färgglad och lättanvänd digital klocka för barn med roliga funktioner."
+		},
+		{
+			"id": 9,
+			"name": "Smartklocka med Musikspelare",
+			"price": 2499,
+			"image": "https://m.media-amazon.com/images/I/61Qwz8INPXL.jpg",
+			"tags": [
+				"smartklocka",
+				"musik"
+			],
+			"description": "En smartklocka med inbyggd musikspelare och trådlös högtalare."
+		},
+		{
+			"id": 10,
+			"name": "Analog Dykarklocka",
+			"price": 1499,
+			"image": "https://uropenn.se/thumb/20610/1024x0/JP200008E.webp",
+			"tags": [
+				"analog",
+				"dykning"
+			],
+			"description": "En robust och vattentät dykarklocka med tydliga markeringar och lysande visare."
+		},
+		{
+			"id": 11,
+			"name": "Digital Träningsklocka",
+			"price": 899,
+			"image": "https://img.ltwebstatic.com/images3_pi/2022/11/18/1668734567a03dbcbded2426c8d61c44ba5ddf03e9_thumbnail_600x.webp",
+			"tags": [
+				"digital",
+				"träning"
+			],
+			"description": "En avancerad träningsklocka med pulsmätare, stegmätare och kaloriräknare."
+		},
+		{
+			"id": 12,
+			"name": "Smartklocka för iPhone",
+			"price": 1799,
+			"image": "https://www.elgiganten.se/image/dv_web_D1800010021129934/522838/apple-watch-se-2nd-gen-40-mm-gps-midnight-alumidnight-sport-band--pdp_zoom-3000--pdp_main-960.jpg",
+			"tags": [
+				"smartklocka",
+				"iPhone"
+			],
+			"description": "En smartklocka som är kompatibel med iPhone och ger dig notiser och möjligheter att styra din telefon direkt från handleden."
+		},
+		{
+			"id": 13,
+			"name": "Klassisk Silverklocka",
+			"price": 599,
+			"image": "https://www.irisimo.com/files/c/q-q/QQ-VY28J204Y-550x550_46976.webp",
+			"tags": [
+				"analog",
+				"silver"
+			],
+			"description": "En stilren silverklocka med klassisk design och läderarmband."
+		},
+		{
+			"id": 14,
+			"name": "Digital Klocka med Höjdmätare",
+			"price": 1299,
+			"image": "https://m.media-amazon.com/images/I/51JdHASE07L._AC_UF1000,1000_QL80_.jpg",
+			"tags": [
+				"digital",
+				"höjdmätare"
+			],
+			"description": "En digital klocka med höjdmätare, barometer och väderprognosfunktion."
+		},
+		{
+			"id": 15,
+			"name": "Smartklocka för Android",
+			"price": 1699,
+			"image": "https://stg-images.samsung.com/is/image/samsung/p6pim/global/wearable/2208/global-wearable-SM-R905_Dynamic_Sliver_Sport_Band_Purple-533107715?$720_720_JPG$",
+			"tags": [
+				"smartklocka",
+				"Android"
+			],
+			"description": "En smartklocka som är kompatibel med Android-telefoner och ger dig full kontroll över dina notiser och appar."
+		},
+		{
+			"id": 16,
+			"name": "Analog Armbandsklocka",
+			"price": 399,
+			"image": "https://images.clasohlson.com/medias/sys_master/he5/hdc/68106533404702.jpg",
+			"tags": [
+				"analog",
+				"armband"
+			],
+			"description": "En stilren och prisvärd analog klocka med justerbart armband."
+		},
+		{
+			"id": 17,
+			"name": "Digital Barnklocka med GPS",
+			"price": 499,
+			"image": "https://m.media-amazon.com/images/I/61Tf7dJ6OIL._AC_UF1000,1000_QL80_.jpg",
+			"tags": [
+				"digital",
+				"barn",
+				"gps"
+			],
+			"description": "En barnklocka med digital display och inbyggd GPS för föräldrakontroll och säkerhet."
+		},
+		{
+			"id": 18,
+			"name": "Smartklocka för Fitness",
+			"price": 1499,
+			"image": "https://www.suunto.com/globalassets/productimages/suunto-vertical2/suunto-vertical-all-black/02_suuntovertical_allblack-perspective-c-14-watch-face.jpg?height=900&format=jpg&bgcolor=f6f6f6",
+			"tags": [
+				"smartklocka",
+				"fitness"
+			],
+			"description": "En avancerad smartklocka med pulsmätare, sömnövervakning och träningsprogram för att hålla dig i form."
+		},
+		{
+			"id": 19,
+			"name": "Analog Skelettklocka",
+			"price": 899,
+			"image": "https://klockor4you.se/image/cache//data/2/1/steampunk-skelettklocka-med-glasad-baksida-2972-750x750.jpg",
+			"tags": [
+				"analog",
+				"skelett"
+			],
+			"description": "En fascinerande skelettklocka som visar de mekaniska rörelserna inuti."
+		},
+		{
+			"id": 20,
+			"name": "Digital Multifunktionsklocka",
+			"price": 699,
+			"image": "https://m.media-amazon.com/images/I/519jcNyo9BL._AC_SY780_.jpg",
+			"tags": [
+				"digital",
+				"multifunktion"
+			],
+			"description": "En mångsidig digital klocka med alarm, timer och kalenderfunktioner."
+		}
+	],
+	"user": [
+		{
+			"id": 101,
+			"name": "admin",
+			"password": "password"
+		},
+		{
+			"id": 102,
+			"name": "elin",
+			"password": "elinslösen"
+		},
+		{
+			"id": 103,
+			"name": "",
+			"password": ""
+		}
+	]
+}
