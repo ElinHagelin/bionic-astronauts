@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 		maybeUser.id = findMaxId(db.data.user) + 1
 		db.data.user.push(maybeUser)
 		await db.write()
-		res.status({ id: maybeUser.id })
+		res.send({ id: maybeUser.id })
 	} else {
 		console.log("Felsöker POST: invalid")
 		res.sendStatus(400)
@@ -72,4 +72,30 @@ router.delete("/:id", async (req, res) => {
 	res.sendStatus(200)
 })
 
+//PUT /users
+router.put("/:id", async (req, res) => {
+	if (!isValidId(req.params.id)) {
+		res.sendStatus(400)
+		return
+	}
+	let id = Number(req.params.id)
+
+	if (!isValidUser(req.body)) {
+		res.sendStatus(400)
+		return
+	}
+	// || !hasId(req.body)
+	let newUser = req.body
+
+	await db.read()
+	let oldUserIndex = db.data.user.findIndex((user) => user.id === id)
+	if (oldUserIndex === -1) {
+		res.sendStatus(404)
+		return
+	}
+	newUser.id = id
+	db.data.user[oldUserIndex] = newUser
+	await db.write()
+	res.sendStatus(200)
+})
 export default router
