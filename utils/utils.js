@@ -23,25 +23,29 @@ export function sortByDescendingName(array) {
 
 export const productSorting = (array, order, sort) => {
 
+    // console.log('array i productSorting är: ', array)
+
 	if (sort == 'name' && order == 'asc') {
-		sortByProperty(array, 'name');
-	} 
+		return sortByProperty(array, 'name');
+
+	}
     else if(sort == 'name' && order == 'desc') {
-        sortByProperty(array, 'name', true)
-    } 
+        return sortByProperty(array, 'name', true)
+    }
     else if (sort == 'price' && order == 'desc') {
-        sortByProperty(array, 'price', true)
+        return sortByProperty(array, 'price', true)
     }
     else if (sort == 'price' && order == 'asc') {
-        sortByProperty(array, 'price')
+        return sortByProperty(array, 'price')
     }
-    
+
 }
 
 
 
 
 function sortByProperty(array, property, descending = false) {
+    // console.log('array ', array)
     const sortedArray = [...array].sort((a, b) => {
       if (a[property] < b[property]) {
         return descending ? 1 : -1;

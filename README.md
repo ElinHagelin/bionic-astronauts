@@ -16,7 +16,7 @@ Our data consists of a **product database** as well as a **user database**.
 
 
 #### Fetch all products:
-```
+```g
 [GET] /products
 ```  
 
