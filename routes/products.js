@@ -5,16 +5,13 @@ import {
 	isValidId,
 	isValidProduct,
 	hasId,
+	isValidSearch
 } from "../data/validate.js"
 
 const router = express.Router()
 const db = getDb()
 
-router.get("/", async (req, res) => {
-	console.log("GET/ products")
-	await db.read()
-	res.send(db.data.products)
-})
+
 
 router.get("/:id", async (req, res) => {
 	if (!isValidId(req.params.id)) {
@@ -24,7 +21,7 @@ router.get("/:id", async (req, res) => {
 	let id = Number(req.params.id)
 
 	await db.read()
-	let maybeProduct = db.data.product.find((product) => product.id === id)
+	let maybeProduct = db.data.products.find((product) => product.id === id)
 	if (!maybeProduct) {
 		res.sendStatus(404)
 		return
@@ -95,6 +92,34 @@ router.put("/:id", async (req, res) => {
 	db.data.products[oldProductIndex] = newProduct
 	await db.write()
 	res.sendStatus(200)
+})
+
+
+
+// Sök-funktion
+router.get('/search' , async (req, res) => {
+	let searchInput = req.query.string
+	console.log(req.query)
+	console.log(searchInput)
+
+	// if (isValidSearch(searchInput) === false) {
+	// 	res.sendStatus(400)
+	// 	return
+	// }
+
+	// if(isValidSearch(searchInput) === true) {
+		// await db.read()
+		// let foundProducts = await db.data.products.filter(products => products.name.toLowerCase().includes(string.toLowerCase()))
+		// res.status(200).send(console.log(foundProducts))
+		// return
+	// }
+})
+
+
+router.get("/", async (req, res) => {
+	console.log("GET/ products")
+	await db.read()
+	res.send(db.data.products)
 })
 
 export default router
