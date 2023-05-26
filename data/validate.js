@@ -82,4 +82,16 @@ function findMaxId(list) {
 	return maxId
 }
 
-export { isValidId, findMaxId, isValidProduct, hasId, isValidUser }
+function isValidSearch(string) {
+	const regex = /^[a-zA-Z0-9\s'"':;.,åäöÅÄÖ]+$/
+
+	if (!regex.test(string)) {
+
+		console.log("Not a valid search! Please refer from using special symbols.")
+		return false
+	} else {
+		return true
+	}
+}
+
+export { isValidId, findMaxId, isValidProduct, hasId, isValidSearch, isValidUser }
