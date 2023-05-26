@@ -95,27 +95,6 @@ router.put("/:id", async (req, res) => {
 })
 
 
-
-// Sök-funktion
-router.get('/search' , async (req, res) => {
-	let searchInput = req.query.string
-	console.log(req.query)
-	console.log(searchInput)
-
-	// if (isValidSearch(searchInput) === false) {
-	// 	res.sendStatus(400)
-	// 	return
-	// }
-
-	// if(isValidSearch(searchInput) === true) {
-		// await db.read()
-		// let foundProducts = await db.data.products.filter(products => products.name.toLowerCase().includes(string.toLowerCase()))
-		// res.status(200).send(console.log(foundProducts))
-		// return
-	// }
-})
-
-
 router.get("/", async (req, res) => {
 	console.log("GET/ products")
 	await db.read()

@@ -7,7 +7,7 @@ const router = express.Router()
 const db = getDb()
 
 router.get("/", async (req, res) => {
-	let searchInput = req.query.string
+	let searchInput = req.query.q
 	let orderInput = req.query.order
 	let sortInput = req.query.sort
 
