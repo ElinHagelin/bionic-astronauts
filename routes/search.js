@@ -17,11 +17,7 @@ router.get("/", async (req, res) => {
 	let foundProducts = db.data.products
 
 
-<<<<<<< HEAD
 	if (orderInput && sortInput && !searchInput) {
-=======
-	if(orderInput && sortInput && !searchInput) {
->>>>>>> 3e6a45f0713d05ea775948c23af75712f320f6ef
 		let sortedList = productSorting(db.data.products, orderInput, sortInput)
 
 		console.log(" 1 ")
