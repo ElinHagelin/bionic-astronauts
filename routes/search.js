@@ -7,30 +7,42 @@ const router = express.Router()
 const db = getDb()
 
 router.get("/", async (req, res) => {
-	let searchInput = req.query.string
+	let searchInput = req.query.q
 	let orderInput = req.query.order
 	let sortInput = req.query.sort
 
-	console.log(req.query);
+	let isRegexApproved = isValidSearch(searchInput)
 
-	if (isValidSearch(searchInput) === false) {
+	await db.read()
+	let foundProducts = db.data.products
+
+
+	if (orderInput && sortInput && !searchInput) {
+		let sortedList = productSorting(db.data.products, orderInput, sortInput)
+
+		console.log(" 1 ")
+
+		res.send(sortedList)
+		return
+	}
+	else if (isRegexApproved) {
+		foundProducts = db.data.products.filter(products => products.name.toLowerCase().includes(searchInput.toLowerCase()))
+
+		if (orderInput && sortInput) {
+			let sortedList = productSorting(foundProducts, orderInput, sortInput)
+			res.send(sortedList)
+			return sortedList
+		}
+		else {
+			res.send(foundProducts)
+			return foundProducts
+		}
+
+	}
+	else {
 		res.sendStatus(400)
 		return
 	}
-
-	if(isValidSearch(searchInput) === true) {
-		await db.read()
-
-        let foundProducts = await db.data.products.filter(products => products.name.toLowerCase().includes(searchInput.toLowerCase()))
-
-        if (orderInput && sortInput) {
-            productSorting(foundProducts, orderInput, sortInput)
-        }
-
-		res.status(200).send(foundProducts)
-		return
-	}
-
 })
 
 export default router

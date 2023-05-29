@@ -220,6 +220,18 @@
 				"multifunktion"
 			],
 			"description": "En mångsidig digital klocka med alarm, timer och kalenderfunktioner."
+		},
+		{
+			"name": "Sportig Digital Klocka",
+			"price": 599,
+			"image": "https://cdn.example.com/img/2023/05/sporty-digital-watch-black-red-42mm.jpg",
+			"tags": [
+				"digital",
+				"klocka",
+				"sportig"
+			],
+			"description": "bla bla bla",
+			"id": 21
 		}
 	],
 	"user": [
@@ -235,8 +247,13 @@
 		},
 		{
 			"id": 103,
-			"name": "",
-			"password": ""
+			"name": "david",
+			"password": "12345"
+		},
+		{
+			"name": "victor2",
+			"password": "12345",
+			"id": 104
 		}
 	]
 }
