@@ -38,8 +38,6 @@ function isValidProduct(p) {
 	priceIsValid = priceIsValid && p.price > 0
 	let imageIsValid = typeof p.image === "string"
 	imageIsValid = imageIsValid && p.image !== ""
-	let descriptionIsValid = typeof p.description === "string"
-	descriptionIsValid = descriptionIsValid && p.description !== ""
 	let tagsAreValid = Array.isArray(p.tags)
 
 	console.log("tagsAreValid är: ", tagsAreValid)
@@ -48,7 +46,6 @@ function isValidProduct(p) {
 		!nameIsValid ||
 		!priceIsValid ||
 		!imageIsValid ||
-		!descriptionIsValid ||
 		!tagsAreValid
 	) {
 		return false
