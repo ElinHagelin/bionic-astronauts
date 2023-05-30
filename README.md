@@ -133,7 +133,6 @@ async function addProduct() {
         price: price,                   // number
         image: "URL",                   // string
         tags: [],                       // string array
-        description: 'A fancy product!' // string
     }
 
     const options = {
