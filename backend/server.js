@@ -19,6 +19,8 @@ app.use("/api/products", productRouter)
 app.use("/api/users", userRouter)
 app.use("/api/search", searchRouter)
 
+
+
 app.listen(port, () => {
 	console.log(`Server is listening on port ${port}...`)
 })
