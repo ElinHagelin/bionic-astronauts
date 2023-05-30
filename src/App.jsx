@@ -1,45 +1,73 @@
-import { useState } from 'react'
-import MediaCard from './MediaCard.jsx'
+import { useState, useEffect } from 'react'
+import MediaCard from './components/MediaCard.jsx'
 import './App.css'
+import styled from 'styled-components'
+import { getProducts } from './utils/ajax/ajaxProducts.js'
 
-function App() {
-	const [products, setProducts] = useState(null)
-	const [errorMessage, setErrorMessage] = useState('')
+const Grid = styled.div`
+	display: grid;
+	grid-template-columns: auto;
+	padding: 0;
+	gap: 2em;
 
-	const getProducts = async () => {
-		// Ta bort eventuellt felmeddelande
-		setErrorMessage('')
-
-		// Hur skriver man URL?
-		// "/api/Products"
-		try {
-			const response = await fetch('/api/products')
-			const data = await response.json()
-			setProducts(data)
-		} catch (error) {
-			setErrorMessage(error.message)
-		}
+	@media screen and (min-width: 700px) {
+		grid-template-columns: auto auto;
+	}
+	@media screen and (min-width: 1000px) {
+		grid-template-columns: auto auto auto;
 	}
 
 
+`
+
+async function App() {
+	const [products, setProducts] = useState([])
+	const [errorMessage, setErrorMessage] = useState('')
+
+	// await getProducts(setProducts, setErrorMessage)
+
+	// useEffect(() => {
+	// 	console.log('inuti useEffect');
+	// 	getAllProducts()
+	// }, [])
+
+
+
+	async function getAllProducts() {
+		console.log('Inuti getALLProducts');
+		setErrorMessage('')
+		try {
+			let data = await getProducts()
+			console.log(data)
+			setProducts(data)
+			console.log('Hämtat data: ', data);
+		} catch (error) {
+			setErrorMessage(error.message)
+		}
+
+	}
+	getAllProducts()
+
 	return (
-		// <>
-		//
-		// </>
-		<div>
+
+		<>
 			<button onClick={getProducts}> Give me some products! </button>
 			{products
 				? (
-					<ul>
-						{products.map(product => (
+					<Grid>
+						<MediaCard variabel='add-product' />
+						{/* {products.map(product => (
 							<MediaCard key={product.id} name={product.name} price={product.price} image={product.image} />
+						))} */}
+						{products.map(product => (
+							<MediaCard key={product.id} variabel='products' object={product} />
 						))}
-					</ul>
+					</Grid>
 				)
 				: <p> No products yet... </p>}
 
 			{errorMessage !== '' ? <p> Ett fel har inträffat! {errorMessage} </p> : null}
-		</div>
+		</>
 	)
 }
 
