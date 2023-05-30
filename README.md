@@ -34,7 +34,6 @@ Our data consists of a **product database** as well as a **user database**.
     price: price,               // number
     image: URL,                 // string
     tags: ['string', 'string'], // [string]
-    description: 'bla bla',     // string
 }
 ```
 
@@ -106,16 +105,16 @@ Our data consists of a **product database** as well as a **user database**.
 ### Fetch all products
 ```js
 async function getAllProducts() {
-    const baseUrl = "http://..../api/products/"
+    const baseUrl = "http://.../api/products/"
     const options = { method: 'GET' }
 
-    try (
+    try {
         let response = await fetch(baseUrl, options)
         let data = await response.json()
         return data
-    ) catch (
+    } catch (error) {
         console.log('error')
-    )
+    }
 }
 
 ```
@@ -125,7 +124,7 @@ async function getAllProducts() {
 ```js
 // POST
 
-async function AddProduct() {
+async function addProduct() {
 
     const baseUrl = "http://..../api/products/"
 
@@ -139,8 +138,8 @@ async function AddProduct() {
 
     const options = {
         method: 'POST',
-        headers: { "Content-Type": "application/json" }
-        body: JSON.stringify(data)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(exampleProduct)
     }
 
     const response = await fetch(baseUrl, options)
@@ -151,51 +150,48 @@ async function AddProduct() {
     } else {
         return false
     }
-
 }
 ```
 ### Delete a product
 ```js
-	const handleDelete = async (productId) => {
-		const deleteUrl =`http://..../api/products/${productId}`
+const handleDelete = async (productId) => {
+    const deleteUrl =`http://.../api/products/${productId}`
 
-		const options = {
-			method: "DELETE",
-		}
+    const options = {
+        method: "DELETE",
+    }
 
-		const response = await fetch(deleteUrl, options)
-		const statusObject = await response.json()
-		if (statusObject.status === "success") {
-			console.log("success")
-			return true
-		}
-		console.log("Delete status failed: ", statusObject)
-		return false
-	}
+    const response = await fetch(deleteUrl, options)
+    if (response.status === 200) {
+        console.log("success")
+        return true
+    }
+    console.log("Delete status failed: ", response)
+    return false
+}
 
 ```
 
 ### Edit a product
 ```js
 async function editProduct(productId) {
-    const url =`http://..../api/products/${productId}`
+    const url =`http://.../api/products/${productId}`
 
     const body = {
         name: 'product name',           // string
         price: price,                   // number
         image: "URL",                   // string
         tags: [],                       // string array
-        description: 'A fancy product!' // string
     }
 
     const options = {
     method: 'PUT',
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body)
     }
 
     let response = await fetch(url, options)
-    let status = await response.json()
+    console.log(response)
 }
 
 
