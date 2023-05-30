@@ -6,7 +6,6 @@ const getProducts = async () => {
 	// "/api/Products"
 	const response = await fetch('/api/products')
 	const data = await response.json()
-	console.log(data)
 	return data
 }
 
