@@ -1,5 +1,5 @@
 import * as React from "react"
-
+import { useState, useEffect } from "react"
 import Card from "@mui/material/Card"
 import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
@@ -8,7 +8,7 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import styled from "styled-components"
 
-import { addProduct } from "../utils/ajax/ajaxProducts.js"
+import { addProduct, deleteProduct } from "../utils/ajax/ajaxProducts.js"
 
 
 
@@ -59,8 +59,11 @@ export default function MediaCard({ variabel, object }) {
 		}
 	}
 
+	useEffect(() => {
+		handleDelete()
+	},[])
 	function handleDelete(id) {
-
+		deleteProduct(id)
 	}
 
 	function handleClick() {

@@ -190,27 +190,6 @@
         "analog",
         "skelett"
       ]
-    },
-    {
-      "id": 20,
-      "name": "Digital Multifunktionsklocka",
-      "price": 699,
-      "image": "https://m.media-amazon.com/images/I/519jcNyo9BL._AC_SY780_.jpg",
-      "tags": [
-        "digital",
-        "multifunktion"
-      ]
-    },
-    {
-      "name": "Sportig Digital Klocka",
-      "price": 599,
-      "image": "https://cdn.example.com/img/2023/05/sporty-digital-watch-black-red-42mm.jpg",
-      "tags": [
-        "digital",
-        "klocka",
-        "sportig"
-      ],
-      "id": 21
     }
   ],
   "user": [
