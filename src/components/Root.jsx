@@ -2,6 +2,7 @@ import { Outlet, NavLink } from "react-router-dom";
 import { useRef, useEffect, createContext, useState } from "react";
 import Overlay from "./Overlay.jsx";
 import styled from "styled-components";
+import { addProduct, editProduct } from "../utils/ajax/ajaxProducts.js";
 
 const Main = styled.main`
     position: relative;
@@ -13,17 +14,40 @@ const Root = () => {
     const modal = useRef(null);
 
     const [currentView, setCurrentView] = useState("products");
+    const [variable, setVariable] = useState("");
+    const [id, setId] = useState(null);
 
-    const handleOpen = (variabel) => {
-        console.log("currentView är: ", currentView);
+
+    const handleOpen = (variabel, id) => {
+		setId(null)
+		console.log("currentView är: ", currentView);
 		console.log(variabel)
         modal.current.showModal();
-
-		// om variabel = includes(add)
-			// POST
-
-		// annars om 
+		setVariable(variabel)
+		id !== undefined && setId(id)
     };
+
+	const handleSave = (e) => {
+
+		console.log(variable)
+		console.log(id)
+
+		if (variable === 'add-products') {
+            console.log('Lägg till produkt');
+			addProduct()
+		} else if (variable === 'products') {
+            console.log('Ändra produkt');
+			editProduct(id)
+		} else if (variable === 'add-user') {
+            console.log('Lägg till användare');
+            addUser()
+		} else {
+			console.log('Ändra användare');
+            editUser(id)
+		}
+
+        modal.current.close();
+	}
 
     const handleAddClick = () => {
         // Skicka POST request
@@ -33,6 +57,7 @@ const Root = () => {
     let modalObject = {
         modal,
         handleOpen,
+		handleSave,
         handleAddClick,
         currentView,
         setCurrentView,
@@ -61,8 +86,7 @@ const Root = () => {
                     </nav>
                 </header>
                 <Main>
-                    {/* <Overlay /> */}
-                    {/* <button onClick={handleOpen}> KLICKA MIG </button> */}
+
                     <Outlet />
                 </Main>
             </RefContext.Provider>

@@ -101,7 +101,7 @@ export default function MediaCard({ variabel, object,  onDeleteProduct, onDelete
 			</CardContent>
 			<CardActions sx={{ justifyContent: 'center', gap: 3 }} >
 				{isProduct || isUser ? <>
-					<Button size="small" onClick={() => handleOpen(variabel)}>Ändra</Button>
+					<Button size="small" onClick={() => handleOpen(variabel, object.id)}>Ändra</Button>
 					<Button size="small" onClick={() => handleDelete(object.id)}>Ta bort</Button>
 				</>
 					: isAddUser || isAddProducts ? <Button size="small" onClick={() => handleOpen(variabel)}>Lägg Till</Button>

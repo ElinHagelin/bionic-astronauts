@@ -54,7 +54,6 @@ function ViewUsers() {
                 <Grid>
                     <MediaCard
                         variabel="add-user"
-                        onDeleteUser={handleDeleteUser}
                     />
                     {users.map((users) => (
                         <MediaCard

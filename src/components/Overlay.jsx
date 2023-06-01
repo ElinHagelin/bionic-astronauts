@@ -18,6 +18,7 @@ function Overlay({ page }) {
     const { handleAddClick } = useContext(RefContext);
     const { currentView } = useContext(RefContext);
     const { setCurrentView } = useContext(RefContext);
+    const { handleSave } = useContext(RefContext);
 
     const nameInput = useRef(null);
     const priceInput = useRef(null);
@@ -30,6 +31,35 @@ function Overlay({ page }) {
         console.log(modal);
         console.log("currentView: ", currentView);
     }, []);
+
+
+	let body = {}
+
+	const validateInputs = () => {
+		let nameIsValid = (nameInput.current.value !== '')
+		let priceIsValid = /\d+/.test(priceInput.current.value)
+		let imageIsValid = (imageInput.current.value !== '')
+		let usernameIsValid = (usernameInput.current.value !== '')
+		let passwordIsValid = (passwordInput.current.value !== '')
+
+		let tagString = tagsInput.current.value
+		let tagArray = []
+		if (tagString.includes(",")) {
+			tagArray = tagString.split(", ")
+		} else {
+			tagArray = tagString.split(" ")
+		}
+
+		if (currentView === 'products' && nameIsValid && priceIsValid && imageIsValid) {
+			body.name = nameInput.current.value
+			body.price = priceInput.current.value
+			body.image = imageInput.current.value
+			body.tags = tagArray
+		} else {
+			body.name = usernameInput.current.value
+			body.password = passwordInput.current.value
+		}
+	}
 
     function handleEditChange() {
         console.log(nameInput.current.value);
@@ -67,9 +97,10 @@ function Overlay({ page }) {
                 }
             }}
         >
-            <h1>Test</h1>
 
             {currentView === "products" && (
+				<>
+            	<h1>Lägg till produkt</h1>
                 <form>
                     <div>
                         <p>Namn:</p>
@@ -106,10 +137,12 @@ function Overlay({ page }) {
                             onChange={handleEditChange}
                         />
                     </div>
-                    <button> Spara </button>
                 </form>
+				</>
             )}
             {currentView === "users" && (
+				<>
+				<h1>Lägg till produkt</h1>
                 <form>
                     <div>
                         <p>Användarnamn:</p>
@@ -129,11 +162,11 @@ function Overlay({ page }) {
                         />
                     </div>
 
-                    <button> Spara </button>
                 </form>
+			</>
             )}
 
-            {/* <button onClick={handleAddClick}>Lägg till</button> */}
+			<button onClick={(e) => handleSave(e)}> Spara </button>
         </dialog>
     );
 }
