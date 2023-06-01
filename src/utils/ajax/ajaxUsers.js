@@ -1,11 +1,7 @@
-const getUsers = async (setUsers, SetErrorMessage) => {
-	try {
-		const response = await fetch('/api/users')
-		const data = await response.json()
-		setUsers(data)
-	} catch (error) {
-		SetErrorMessage(error.message)
-	}
+const getUsers = async () => {
+	const response = await fetch('/api/users')
+	const data = await response.json()
+	return data
 }
 
 async function addUser(name, password) {
@@ -32,14 +28,36 @@ async function addUser(name, password) {
 }
 
 const deleteUser = async (userId) => {
-	const deleteUrl = `http://localhost:1567/api/products/${userId}`
+	const deleteUrl = `http://localhost:1567/api/users/${userId}`
 	const options = {
 		method: "DELETE",
 	}
-	const response = await fetch(deletUrl, options)
+	const response = await fetch(deleteUrl, options)
 	if (response.status === 200)
 		return true
 }
+
+
+// const deleteProduct = async (productId) => {
+// 	const deleteUrl = `http://localhost:1567/api/products/${productId}`
+
+// 	const options = {
+// 		method: "DELETE",
+// 	}
+
+// 	try {
+// 		const response = await fetch(deleteUrl, options)
+// 		console.log("success")
+// 		return true
+
+// 	} catch (error) {
+// 		console.log("Delete status failed: ", response)
+// 		return false
+
+// 	}
+
+// }
+
 
 async function editUser(name, password) {
 	const url = `http://localhost:1567/api/users/${userId}`

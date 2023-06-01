@@ -211,26 +211,6 @@
         "sportig"
       ],
       "id": 21
-    },
-    {
-      "id": 22,
-      "name": "Klassisk Analog Klocka",
-      "price": 1,
-      "image": "https://cdn.northbond.com/img/2018/06/sail-watch-brown-rose-gold-40mm-768x960.jpg",
-      "tags": [
-        "analog",
-        "tidlös"
-      ]
-    },
-    {
-      "id": 23,
-      "name": "Klassisk Analog Klocka",
-      "price": 1,
-      "image": "https://cdn.northbond.com/img/2018/06/sail-watch-brown-rose-gold-40mm-768x960.jpg",
-      "tags": [
-        "analog",
-        "tidlös"
-      ]
     }
   ],
   "user": [
@@ -248,11 +228,6 @@
       "id": 103,
       "name": "david",
       "password": "12345"
-    },
-    {
-      "name": "victor2",
-      "password": "12345",
-      "id": 104
     }
   ]
 }

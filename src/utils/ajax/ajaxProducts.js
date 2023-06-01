@@ -44,13 +44,17 @@ const deleteProduct = async (productId) => {
 		method: "DELETE",
 	}
 
-	const response = await fetch(deleteUrl, options)
-	if (response.status === 200) {
+	try {
+		const response = await fetch(deleteUrl, options)
 		console.log("success")
 		return true
+
+	} catch (error) {
+		console.log("Delete status failed: ", response)
+		return false
+
 	}
-	console.log("Delete status failed: ", response)
-	return false
+
 }
 
 async function editProduct(productId, name, price, image, tags) {
@@ -73,4 +77,8 @@ async function editProduct(productId, name, price, image, tags) {
 	console.log(response)
 }
 
-export { getProducts, addProduct, deleteProduct, editProduct }
+// async function onDeleteProduct(){
+
+// }
+
+export { getProducts, addProduct, deleteProduct, editProduct,  }

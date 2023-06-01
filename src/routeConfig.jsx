@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
-import Root from "./routes/Root.jsx"
-import ViewProducts from "./routes/ViewProducts.jsx"
-import ViewUsers from "./routes/ViewUsers.jsx"
+import Root from "../src/components/Root.jsx"
+import ViewProducts from "../src/components/ViewProducts.jsx"
+import ViewUsers from "../src/components/ViewUsers.jsx"
 
 export const router = createBrowserRouter([
 	{
