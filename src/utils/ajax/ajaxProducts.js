@@ -69,8 +69,4 @@ async function editProduct(productId, name, price, image, tags) {
 	console.log(response)
 }
 
-// async function onDeleteProduct(){
-
-// }
-
 export { getProducts, addProduct, deleteProduct, editProduct,  }

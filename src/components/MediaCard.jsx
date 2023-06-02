@@ -57,12 +57,6 @@ export default function MediaCard({ variabel, object,  onDeleteProduct, onDelete
 		}
 	}
 
-	function handleClick() {
-		// Öppna overlay
-
-		// Räkna ut vilken funktion som ska köras
-	}
-
 	return (
 
 

@@ -84,7 +84,6 @@ router.put("/:id", async (req, res) => {
 		res.sendStatus(400)
 		return
 	}
-	// || !hasId(req.body)
 	let newUser = req.body
 
 	await db.read()

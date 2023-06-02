@@ -4,7 +4,6 @@ import {
 	findMaxId,
 	isValidId,
 	isValidProduct,
-	// hasId,
 	isValidSearch //används denna?
 } from "../data/validate.js"
 
@@ -78,7 +77,6 @@ router.put("/:id", async (req, res) => {
 		res.sendStatus(400)
 		return
 	}
-	// || !hasId(req.body)
 	let newProduct = req.body
 
 	await db.read()
