@@ -20,15 +20,20 @@ const Root = () => {
     const [variable, setVariable] = useState("");
     const [id, setId] = useRecoilState(idAtom);
 
+    const [updateCount, setUpdateCount] = useState(0)
 
-    const handleOpen = (variabel, objectId) => {
-        console.log('objectId: ', objectId)
+    const updateViewProductsComponent = () => {
+        setUpdateCount((prevCount) => prevCount + 1)
+    }
+
+    const handleOpen = (variabel, object) => {
+        // console.log('object.id: ', object.id)
         console.log('recoil id: ', id)
-        // if (objectId !== null || objectId !== undefined) {
-            setId(objectId)
+        // if (object == null || object == undefined) {
+            object && setId(object.id)
         // }
         // else {
-        //     setId(objectId)
+            // setId(object.id)
         // }
 		// console.log("currentView är: ", currentView);
 		// console.log(variabel)
@@ -60,7 +65,7 @@ const Root = () => {
 			console.log('Ändra användare');
             editUser(id, body.name, body.password)
 		}
-
+        updateViewProductsComponent()
         modal.current.close();
 	}
 
@@ -76,6 +81,8 @@ const Root = () => {
         handleAddClick,
         currentView,
         setCurrentView,
+        updateCount,
+        setUpdateCount
     };
 
 

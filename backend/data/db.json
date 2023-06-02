@@ -200,6 +200,15 @@
         "digital",
         "multifunktion"
       ]
+    },
+    {
+      "name": "asd",
+      "price": 1,
+      "image": "asd",
+      "tags": [
+        "zxc"
+      ],
+      "id": 21
     }
   ],
   "user": [
@@ -219,7 +228,7 @@
       "password": "12345"
     },
     {
-      "name": "asd",
+      "name": "123",
       "password": "123",
       "id": 104
     }

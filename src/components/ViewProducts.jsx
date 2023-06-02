@@ -5,6 +5,9 @@ import styled from "styled-components";
 import { getProducts } from "../utils/ajax/ajaxProducts.js";
 import Overlay from "./Overlay.jsx";
 import "../index.css";
+import { useContext } from "react";
+import { RefContext } from "./Root.jsx";
+
 const Grid = styled.div`
     display: grid;
     grid-template-columns: auto;
@@ -23,6 +26,7 @@ function ViewProducts() {
     const [products, setProducts] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
+    const {updateCount} = useContext(RefContext)
 
     async function getAllProducts() {
         console.log("Inuti getALLProducts");
@@ -37,9 +41,9 @@ function ViewProducts() {
         }
     }
 
-    useEffect(() => {
-        getAllProducts();
-    }, []);
+    // useEffect(() => {
+    //     getAllProducts();
+    // }, []);
 
     // async function handleEditProduct(id, name, price, image, tags) {
     //     try {
@@ -55,9 +59,9 @@ function ViewProducts() {
         );
     }
 
-    function handleEditProduct() {
-        
-    }
+    useEffect(() => {
+        getAllProducts()
+    },[updateCount])
 
 
     const handleSearch = (e) => {

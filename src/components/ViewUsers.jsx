@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import MediaCard from "./MediaCard.jsx";
 import "../../src/App.css";
 import styled from "styled-components";
 import { getUsers } from "../utils/ajax/ajaxUsers.js";
 import Overlay from "./Overlay.jsx";
+import { RefContext } from "./Root.jsx";
 
 const Grid = styled.div`
     display: grid;
@@ -21,6 +22,7 @@ const Grid = styled.div`
 function ViewUsers() {
     const [users, setUsers] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
+    const {updateCount} = useContext(RefContext)
 
     async function getAllUsers() {
         setErrorMessage("");
@@ -34,7 +36,7 @@ function ViewUsers() {
 
     useEffect(() => {
         getAllUsers();
-    }, []);
+    }, [updateCount]);
 
     function handleDeleteUser(id) {
         setUsers((prevUsers) => prevUsers.filter((users) => users.id !== id));
