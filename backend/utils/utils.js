@@ -23,8 +23,6 @@ export function sortByDescendingName(array) {
 
 export const productSorting = (array, order, sort) => {
 
-    // console.log('array i productSorting är: ', array)
-
 	if (sort == 'name' && order == 'asc') {
 		return sortByProperty(array, 'name');
 
@@ -45,7 +43,6 @@ export const productSorting = (array, order, sort) => {
 
 
 function sortByProperty(array, property, descending = false) {
-    // console.log('array ', array)
     const sortedArray = [...array].sort((a, b) => {
       if (a[property] < b[property]) {
         return descending ? 1 : -1;

@@ -41,18 +41,6 @@ function ViewProducts() {
         }
     }
 
-    // useEffect(() => {
-    //     getAllProducts();
-    // }, []);
-
-    // async function handleEditProduct(id, name, price, image, tags) {
-    //     try {
-    //         await editProduct(id, name, price, image, tags);
-    //     } catch (error) {
-    //         setErrorMessage(error.message);
-    //     }
-    // }
-
     function handleDeleteProduct(id) {
         setProducts((prevProducts) =>
             prevProducts.filter((product) => product.id !== id)

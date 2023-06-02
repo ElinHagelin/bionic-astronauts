@@ -27,30 +27,19 @@ const Root = () => {
     }
 
     const handleOpen = (variabel, object) => {
-        // console.log('object.id: ', object.id)
+        console.log('object.id: ', object?.id)
         console.log('recoil id: ', id)
-        // if (object == null || object == undefined) {
-            object && setId(object.id)
-        // }
-        // else {
-            // setId(object.id)
-        // }
-		// console.log("currentView är: ", currentView);
-		// console.log(variabel)
-        // console.log('objectId:t i handleOpen är: ', objectId)
-        // console.log('id:t i handleOpen är: ', id)
+
+        setId(object?.id)
+
         modal.current.showModal();
 		setVariable(variabel)
-        // console.log('recoil id efteråt: ', id)
-		// id !== undefined && setId(id)
     };
 
 	const handleSave = (body) => {
 
 		console.log(variable)
 		console.log('id:t i handleSave är: ', id)
-
-        // console.log(body.name)
 
 		if (variable === 'add-products') {
             console.log('Lägg till produkt');

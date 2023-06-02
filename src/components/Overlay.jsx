@@ -55,20 +55,6 @@ function Overlay({ page }) {
     }
 
 
-    // function handleEditChange() {
-    //     console.log(nameInput.current.value);
-    // }
-
-    // function handleDelete(id) {
-    // 	if (isProduct) {
-    // 		deleteProduct(id)
-    // 		onDeleteProduct(id)
-    // 	} else if (isUser) {
-    // 		deleteUser(id)
-    // 		onDeleteUser(id)
-    // 	}
-    // }
-
     function handleEditClick() {
         if (page === "products") {
             editProduct(id);
@@ -102,7 +88,6 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={nameInput}
-                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -111,7 +96,6 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={priceInput}
-                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -120,7 +104,6 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={urlInput}
-                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -129,7 +112,6 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={tagsInput}
-                            // onChange={handleEditChange}
                         />
                     </div>
                 </form>
@@ -143,18 +125,14 @@ function Overlay({ page }) {
                         <p>Användarnamn:</p>
                         <input
                             type="text"
-                            ref={usernameInput}
-                            // onChange={handleEditChange}
-                        />
+                            ref={usernameInput}                        />
                     </div>
 
                     <div>
                         <p>Lösenord:</p>
                         <input
                             type="text"
-                            ref={passwordInput}
-                            // onChange={handleEditChange}
-                        />
+                            ref={passwordInput}                        />
                     </div>
 
                 </form>

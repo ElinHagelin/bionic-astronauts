@@ -40,17 +40,6 @@ export default function MediaCard({ variabel, object,  onDeleteProduct, onDelete
 		}
 	}
 
-	// PÅGÅENDE HANDLEEDIT
-
-	// const nameInput = useRef(null)
-	// const priceInput = useRef(null)
-	// const urlInput = useRef(null)
-	// const tagsInput = useRef(null)
-
-	// function handleEditChange() {
-	// 	console.log(nameInput.current.value)
-
-	// }
 
 	function handleEdit(id) {
 
