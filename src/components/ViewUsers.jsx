@@ -55,11 +55,11 @@ function ViewUsers() {
                     <MediaCard
                         variabel="add-user"
                     />
-                    {users.map((users) => (
+                    {users.map((user) => (
                         <MediaCard
-                            key={users.id}
+                            key={user.id}
                             variabel="users"
-                            object={users}
+                            object={user}
                             onDeleteUser={handleDeleteUser}
                         />
                     ))}

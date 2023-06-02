@@ -37,28 +37,6 @@ const deleteUser = async (userId) => {
 		return true
 }
 
-
-// const deleteProduct = async (productId) => {
-// 	const deleteUrl = `http://localhost:1567/api/products/${productId}`
-
-// 	const options = {
-// 		method: "DELETE",
-// 	}
-
-// 	try {
-// 		const response = await fetch(deleteUrl, options)
-// 		console.log("success")
-// 		return true
-
-// 	} catch (error) {
-// 		console.log("Delete status failed: ", response)
-// 		return false
-
-// 	}
-
-// }
-
-
 async function editUser(name, password) {
 	const url = `http://localhost:1567/api/users/${userId}`
 

@@ -22,6 +22,7 @@ const Grid = styled.div`
 function ViewProducts() {
     const [products, setProducts] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
+    const [searchQuery, setSearchQuery] = useState("")
 
     async function getAllProducts() {
         console.log("Inuti getALLProducts");
@@ -54,25 +55,39 @@ function ViewProducts() {
         );
     }
 
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <>
-            {products ? (
-                <Grid>
-                    <MediaCard
-                        variabel="add-products"
-                    />
-                    {products.map((product) => (
-                        <MediaCard
-                            key={product.id}
-                            variabel="products"
-                            object={product}
-                            onDeleteProduct={handleDeleteProduct}
-                        />
-                    ))}
-                </Grid>
-            ) : (
-                <p> Det finns inga produkter än </p>
-            )}
+            <input
+                type="text"
+                value={searchQuery}
+                onChange={handleSearch}
+                placeholder="Search products"
+            />
+            {filteredProducts.length > 0 ? (
+                products ? (
+                    <Grid>
+                        <MediaCard variabel="add-products" />
+                        {filteredProducts.map((product) => (
+                            <MediaCard
+                                key={product.id}
+                                variabel="products"
+                                object={product}
+                                onDeleteProduct={handleDeleteProduct}
+                            />
+                        ))}
+                    </Grid>
+                ) : (
+                    <p>Det finns inga produkter än</p>
+                )
+            ) : null}
 
             {errorMessage !== "" ? (
                 <p> Ett fel har inträffat! {errorMessage} </p>

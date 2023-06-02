@@ -3,8 +3,13 @@ import styled from "styled-components";
 import { RefContext } from "./Root";
 import { useRef } from "react";
 import { editProduct } from "../utils/ajax/ajaxProducts";
+import validateInputs from "../utils/validateForm";
+import { useRecoilState } from "recoil";
+import idAtom from "../recoil/idAtom";
 
-const styledModal = styled.dialog`
+
+
+const StyledModal = styled.dialog`
     position: fixed;
     top: 50%;
     left: 50%;
@@ -27,6 +32,8 @@ function Overlay({ page }) {
     const usernameInput = useRef(null);
     const passwordInput = useRef(null);
 
+    const [id, setId] = useRecoilState(idAtom)
+
     useEffect(() => {
         console.log(modal);
         console.log("currentView: ", currentView);
@@ -35,35 +42,19 @@ function Overlay({ page }) {
 
 	let body = {}
 
-	const validateInputs = () => {
-		let nameIsValid = (nameInput.current.value !== '')
-		let priceIsValid = /\d+/.test(priceInput.current.value)
-		let imageIsValid = (imageInput.current.value !== '')
-		let usernameIsValid = (usernameInput.current.value !== '')
-		let passwordIsValid = (passwordInput.current.value !== '')
 
-		let tagString = tagsInput.current.value
-		let tagArray = []
-		if (tagString.includes(",")) {
-			tagArray = tagString.split(", ")
-		} else {
-			tagArray = tagString.split(" ")
-		}
+    function testValidity() {
+        let validInputs = validateInputs(currentView, body, nameInput, priceInput, urlInput, tagsInput, usernameInput, passwordInput)
 
-		if (currentView === 'products' && nameIsValid && priceIsValid && imageIsValid) {
-			body.name = nameInput.current.value
-			body.price = priceInput.current.value
-			body.image = imageInput.current.value
-			body.tags = tagArray
-		} else {
-			body.name = usernameInput.current.value
-			body.password = passwordInput.current.value
-		}
-	}
-
-    function handleEditChange() {
-        console.log(nameInput.current.value);
+        if (validInputs) {
+            handleSave()
+        }
     }
+
+
+    // function handleEditChange() {
+    //     console.log(nameInput.current.value);
+    // }
 
     // function handleDelete(id) {
     // 	if (isProduct) {
@@ -83,7 +74,7 @@ function Overlay({ page }) {
         }
     }
     return (
-        <dialog
+        <StyledModal
             ref={modal}
             onClick={(e) => {
                 const dialogDimensions = modal.current.getBoundingClientRect();
@@ -100,14 +91,16 @@ function Overlay({ page }) {
 
             {currentView === "products" && (
 				<>
-            	<h1>Lägg till produkt</h1>
+
+            	<h1> {id == true ? 'Ändra produkt' : 'Lägg till produkt'
+                }</h1>
                 <form>
                     <div>
                         <p>Namn:</p>
                         <input
                             type="text"
                             ref={nameInput}
-                            onChange={handleEditChange}
+                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -116,7 +109,7 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={priceInput}
-                            onChange={handleEditChange}
+                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -125,7 +118,7 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={urlInput}
-                            onChange={handleEditChange}
+                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -134,7 +127,7 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={tagsInput}
-                            onChange={handleEditChange}
+                            // onChange={handleEditChange}
                         />
                     </div>
                 </form>
@@ -142,14 +135,14 @@ function Overlay({ page }) {
             )}
             {currentView === "users" && (
 				<>
-				<h1>Lägg till produkt</h1>
+				<h1>{id == true ? 'Ändra användare' : 'Lägg till användare'}</h1>
                 <form>
                     <div>
                         <p>Användarnamn:</p>
                         <input
                             type="text"
                             ref={usernameInput}
-                            onChange={handleEditChange}
+                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -158,7 +151,7 @@ function Overlay({ page }) {
                         <input
                             type="text"
                             ref={passwordInput}
-                            onChange={handleEditChange}
+                            // onChange={handleEditChange}
                         />
                     </div>
 
@@ -166,8 +159,8 @@ function Overlay({ page }) {
 			</>
             )}
 
-			<button onClick={(e) => handleSave(e)}> Spara </button>
-        </dialog>
+			<button onClick={(e) => testValidity(e)}> Spara </button>
+        </StyledModal>
     );
 }
 
