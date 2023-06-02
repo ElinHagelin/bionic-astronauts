@@ -16,11 +16,8 @@ router.get("/", async (req, res) => {
 	await db.read()
 	let foundProducts = db.data.products
 
-
 	if (orderInput && sortInput && !searchInput) {
 		let sortedList = productSorting(db.data.products, orderInput, sortInput)
-
-		console.log(" 1 ")
 
 		res.send(sortedList)
 		return

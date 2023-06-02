@@ -27,13 +27,6 @@ async function addProduct(name, price, image, tags) {
 	}
 
 	const response = await fetch(baseUrl, options)
-	const statusObject = await response.json()
-
-	if (statusObject.status === 'success') {
-		return true
-	} else {
-		return false
-	}
 }
 
 
@@ -52,7 +45,6 @@ const deleteProduct = async (productId) => {
 	} catch (error) {
 		console.log("Delete status failed: ", response)
 		return false
-
 	}
 
 }

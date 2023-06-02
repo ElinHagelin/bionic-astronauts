@@ -46,8 +46,11 @@ function Overlay({ page }) {
     function testValidity() {
         let validInputs = validateInputs(currentView, body, nameInput, priceInput, urlInput, tagsInput, usernameInput, passwordInput)
 
+        console.log('validInputs är: ', validInputs)
+        console.log('body är: ', body)
+
         if (validInputs) {
-            handleSave()
+            handleSave(body)
         }
     }
 
@@ -92,8 +95,7 @@ function Overlay({ page }) {
             {currentView === "products" && (
 				<>
 
-            	<h1> {id == true ? 'Ändra produkt' : 'Lägg till produkt'
-                }</h1>
+            	<h1> {id ? 'Ändra produkt' : 'Lägg till produkt'}</h1>
                 <form>
                     <div>
                         <p>Namn:</p>
@@ -135,7 +137,7 @@ function Overlay({ page }) {
             )}
             {currentView === "users" && (
 				<>
-				<h1>{id == true ? 'Ändra användare' : 'Lägg till användare'}</h1>
+				<h1>{id ? 'Ändra användare' : 'Lägg till användare'}</h1>
                 <form>
                     <div>
                         <p>Användarnamn:</p>

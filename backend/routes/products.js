@@ -4,8 +4,8 @@ import {
 	findMaxId,
 	isValidId,
 	isValidProduct,
-	hasId,
-	isValidSearch
+	// hasId,
+	isValidSearch //används denna?
 } from "../data/validate.js"
 
 const router = express.Router()

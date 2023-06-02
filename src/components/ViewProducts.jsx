@@ -4,7 +4,7 @@ import "../../src/App.css";
 import styled from "styled-components";
 import { getProducts } from "../utils/ajax/ajaxProducts.js";
 import Overlay from "./Overlay.jsx";
-
+import "../index.css";
 const Grid = styled.div`
     display: grid;
     grid-template-columns: auto;
@@ -22,7 +22,7 @@ const Grid = styled.div`
 function ViewProducts() {
     const [products, setProducts] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
-    const [searchQuery, setSearchQuery] = useState("")
+    const [searchQuery, setSearchQuery] = useState("");
 
     async function getAllProducts() {
         console.log("Inuti getALLProducts");
@@ -41,19 +41,24 @@ function ViewProducts() {
         getAllProducts();
     }, []);
 
-    async function handleEditProduct(id, name, price, image, tags) {
-        try {
-            await editProduct(id, name, price, image, tags);
-        } catch (error) {
-            setErrorMessage(error.message);
-        }
-    }
+    // async function handleEditProduct(id, name, price, image, tags) {
+    //     try {
+    //         await editProduct(id, name, price, image, tags);
+    //     } catch (error) {
+    //         setErrorMessage(error.message);
+    //     }
+    // }
 
     function handleDeleteProduct(id) {
         setProducts((prevProducts) =>
             prevProducts.filter((product) => product.id !== id)
         );
     }
+
+    function handleEditProduct() {
+        
+    }
+
 
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
@@ -65,7 +70,7 @@ function ViewProducts() {
 
     return (
         <>
-            <input
+            <input className="input-search"
                 type="text"
                 value={searchQuery}
                 onChange={handleSearch}

@@ -70,3 +70,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* ------------------- */
+.input-search {
+  margin: 1em;
+}
+
+.nav-links {
+  margin: 1em;
+}

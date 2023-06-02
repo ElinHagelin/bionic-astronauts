@@ -124,31 +124,24 @@ async function getAllProducts() {
 ```js
 // POST
 
-async function addProduct() {
+async function addProduct(name, price, image, tags) {
 
-    const baseUrl = "http://..../api/products/"
+	const baseUrl = "http://localhost:1567/api/products/"
 
-    const exampleProduct = {
-        name: 'product name',           // string
-        price: price,                   // number
-        image: "URL",                   // string
-        tags: [],                       // string array
-    }
+	const newProduct = {
+		name: name,
+		price: price,
+		image: image,
+		tags: tags,
+	}
 
-    const options = {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(exampleProduct)
-    }
+	const options = {
+		method: 'POST',
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(newProduct)
+	}
 
-    const response = await fetch(baseUrl, options)
-    const statusObject = await response.json()
-
-    if (statusObject.status === 'success') {
-        return true
-    } else {
-        return false
-    }
+	const response = await fetch(baseUrl, options)
 }
 ```
 ### Delete a product
@@ -173,24 +166,24 @@ const handleDelete = async (productId) => {
 
 ### Edit a product
 ```js
-async function editProduct(productId) {
-    const url =`http://.../api/products/${productId}`
+async function editProduct(productId, name, price, image, tags) {
+	const url = `http://localhost:1567/api/products/${productId}`
 
-    const body = {
-        name: 'product name',           // string
-        price: price,                   // number
-        image: "URL",                   // string
-        tags: [],                       // string array
-    }
+	const body = {
+		name: name,
+		price: price,
+		image: image,
+		tags: tags,
+	}
 
-    const options = {
-    method: 'PUT',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-    }
+	const options = {
+		method: 'PUT',
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(body)
+	}
 
-    let response = await fetch(url, options)
-    console.log(response)
+	let response = await fetch(url, options)
+	console.log(response)
 }
 
 

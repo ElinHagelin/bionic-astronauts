@@ -3,6 +3,7 @@ import { useRef, useEffect, createContext, useState } from "react";
 import Overlay from "./Overlay.jsx";
 import styled from "styled-components";
 import { addProduct, editProduct } from "../utils/ajax/ajaxProducts.js";
+import { addUser, editUser } from "../utils/ajax/ajaxUsers.js";
 import { useRecoilState } from "recoil";
 import idAtom from "../recoil/idAtom.js";
 
@@ -29,33 +30,35 @@ const Root = () => {
         // else {
         //     setId(objectId)
         // }
-        // console.log('recoil id efteråt: ', id)
 		// console.log("currentView är: ", currentView);
 		// console.log(variabel)
         // console.log('objectId:t i handleOpen är: ', objectId)
         // console.log('id:t i handleOpen är: ', id)
         modal.current.showModal();
 		setVariable(variabel)
+        // console.log('recoil id efteråt: ', id)
 		// id !== undefined && setId(id)
     };
 
-	const handleSave = (e) => {
+	const handleSave = (body) => {
 
 		console.log(variable)
 		console.log('id:t i handleSave är: ', id)
 
+        // console.log(body.name)
+
 		if (variable === 'add-products') {
             console.log('Lägg till produkt');
-			// addProduct()
+			addProduct(body.name, body.price, body.image, body.tags)
 		} else if (variable === 'products') {
             console.log('Ändra produkt');
-			// editProduct(id)
+			editProduct(id, body.name, body.price, body.image, body.tags)
 		} else if (variable === 'add-user') {
             console.log('Lägg till användare');
-            // addUser()
+            addUser(body.name, body.password)
 		} else {
 			console.log('Ändra användare');
-            // editUser(id)
+            editUser(id, body.name, body.password)
 		}
 
         modal.current.close();
@@ -80,9 +83,10 @@ const Root = () => {
         <>
             <RefContext.Provider value={modalObject}>
                 <header>
-                    <h1> Rubrik Webshop klockor </h1>
+                    <h1> Bionic-Astronauts Klockor </h1>
                     <nav>
                         <NavLink
+                            className="nav-links"
                             to="/"
                             onClick={() => setCurrentView("products")}
                         >
@@ -90,6 +94,7 @@ const Root = () => {
                             Produkter{" "}
                         </NavLink>
                         <NavLink
+                            className="nav-links"
                             to="/users"
                             onClick={() => setCurrentView("users")}
                         >

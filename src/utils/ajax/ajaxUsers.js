@@ -37,7 +37,7 @@ const deleteUser = async (userId) => {
 		return true
 }
 
-async function editUser(name, password) {
+async function editUser(userId, name, password) {
 	const url = `http://localhost:1567/api/users/${userId}`
 
 	const body = {

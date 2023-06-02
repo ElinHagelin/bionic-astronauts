@@ -30,7 +30,7 @@ const validateInputs = (currentView, body, nameInput, priceInput, imageInput, ta
 
 	if (currentView === 'products' && nameIsValid && priceIsValid && imageIsValid) {
 		body.name = nameInput.current.value
-		body.price = priceInput.current.value
+		body.price = Number(priceInput.current.value)
 		body.image = imageInput.current.value
 		body.tags = tagArray
 		return true
