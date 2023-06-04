@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { getUsers } from "../utils/ajax/ajaxUsers.js";
 import Overlay from "./Overlay.jsx";
 import { RefContext } from "./Root.jsx";
+import "../index.css";
 
 const Grid = styled.div`
     display: grid;

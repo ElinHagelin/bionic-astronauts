@@ -43,12 +43,15 @@ function Overlay() {
     }
 
     const clearInputFields = () => {
-        nameInput.current.value = '';
-        priceInput.current.value = '';
-        urlInput.current.value = '';
-        tagsInput.current.value = '';
-        usernameInput.current.value = '';
-        passwordInput.current.value = '';
+        if (currentView === 'products') {
+            nameInput.current.value = '';
+            priceInput.current.value = '';
+            urlInput.current.value = '';
+            tagsInput.current.value = '';
+        } else {
+            usernameInput.current.value = '';
+            passwordInput.current.value = '';
+        }
     };
 
 
