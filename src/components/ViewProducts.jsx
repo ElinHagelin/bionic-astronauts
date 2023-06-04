@@ -26,7 +26,7 @@ function ViewProducts() {
     const [products, setProducts] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
-    const {updateCount} = useContext(RefContext)
+    const { updateCount } = useContext(RefContext)
 
     async function getAllProducts() {
         console.log("Inuti getALLProducts");
@@ -49,7 +49,7 @@ function ViewProducts() {
 
     useEffect(() => {
         getAllProducts()
-    },[updateCount])
+    }, [updateCount])
 
 
     const handleSearch = (e) => {
@@ -89,7 +89,7 @@ function ViewProducts() {
             {errorMessage !== "" ? (
                 <p> Ett fel har inträffat! {errorMessage} </p>
             ) : null}
-            <Overlay page="products" />
+            <Overlay />
         </>
     );
 }

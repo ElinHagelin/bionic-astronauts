@@ -1,9 +1,5 @@
 const getProducts = async () => {
-	// Ta bort eventuellt felmeddelande
-	console.log('inuti GET')
 
-	// Hur skriver man URL?
-	// "/api/Products"
 	const response = await fetch('/api/products')
 	const data = await response.json()
 	return data
@@ -11,7 +7,7 @@ const getProducts = async () => {
 
 async function addProduct(name, price, image, tags) {
 
-	const baseUrl = "http://localhost:1567/api/products/"
+	const baseUrl = "/api/products/"
 
 	const newProduct = {
 		name: name,
@@ -31,7 +27,7 @@ async function addProduct(name, price, image, tags) {
 
 
 const deleteProduct = async (productId) => {
-	const deleteUrl = `http://localhost:1567/api/products/${productId}`
+	const deleteUrl = `/api/products/${productId}`
 
 	const options = {
 		method: "DELETE",
@@ -50,7 +46,7 @@ const deleteProduct = async (productId) => {
 }
 
 async function editProduct(productId, name, price, image, tags) {
-	const url = `http://localhost:1567/api/products/${productId}`
+	const url = `/api/products/${productId}`
 
 	const body = {
 		name: name,
@@ -69,4 +65,4 @@ async function editProduct(productId, name, price, image, tags) {
 	console.log(response)
 }
 
-export { getProducts, addProduct, deleteProduct, editProduct,  }
+export { getProducts, addProduct, deleteProduct, editProduct, }

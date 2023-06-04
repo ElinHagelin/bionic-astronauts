@@ -4,7 +4,6 @@ import {
 	findMaxId,
 	isValidId,
 	isValidProduct,
-	isValidSearch //används denna?
 } from "../data/validate.js"
 
 const router = express.Router()
@@ -31,10 +30,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
 	let maybeProduct = req.body
-	console.log("Felsöker POST: maybe=", maybeProduct)
 
 	if (isValidProduct(maybeProduct)) {
-		console.log("Felsöker POST: is valid")
 		await db.read()
 		maybeProduct.id = findMaxId(db.data.products) + 1
 		db.data.products.push(maybeProduct)
@@ -42,7 +39,6 @@ router.post("/", async (req, res) => {
 		res.send({ id: maybeProduct.id })
 
 	} else {
-		console.log("Felsöker POST: invalid")
 		res.sendStatus(400)
 	}
 })
@@ -95,7 +91,6 @@ router.put("/:id", async (req, res) => {
 
 
 router.get("/", async (req, res) => {
-	console.log("GET/ products")
 	await db.read()
 	res.send(db.data.products)
 })

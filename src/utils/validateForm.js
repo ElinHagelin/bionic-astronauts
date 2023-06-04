@@ -3,9 +3,9 @@
 
 const validateInputs = (currentView, body, nameInput, priceInput, imageInput, tagsInput, usernameInput, passwordInput) => {
 
-    let nameIsValid
-    let priceIsValid
-    let imageIsValid
+	let nameIsValid
+	let priceIsValid
+	let imageIsValid
 	let tagString
 	let usernameIsValid
 	let passwordIsValid

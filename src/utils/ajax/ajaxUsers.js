@@ -5,7 +5,7 @@ const getUsers = async () => {
 }
 
 async function addUser(name, password) {
-	const basUrl = "http://localhost:1567/api/users/"
+	const basUrl = "/api/users/"
 
 	const newUser = {
 		name: name,
@@ -28,7 +28,7 @@ async function addUser(name, password) {
 }
 
 const deleteUser = async (userId) => {
-	const deleteUrl = `http://localhost:1567/api/users/${userId}`
+	const deleteUrl = `/api/users/${userId}`
 	const options = {
 		method: "DELETE",
 	}
@@ -38,7 +38,7 @@ const deleteUser = async (userId) => {
 }
 
 async function editUser(userId, name, password) {
-	const url = `http://localhost:1567/api/users/${userId}`
+	const url = `/api/users/${userId}`
 
 	const body = {
 		name: name,

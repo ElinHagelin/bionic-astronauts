@@ -1,24 +1,19 @@
 import * as React from "react"
-import { useState, useEffect } from "react"
 import Card from "@mui/material/Card"
 import CardActions from "@mui/material/CardActions"
 import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
-import styled from "styled-components"
-import { useRef } from "react"
 import { useContext } from "react"
 import { RefContext } from "./Root.jsx"
-
-import { addProduct, deleteProduct, editProduct, getProducts } from "../utils/ajax/ajaxProducts.js"
+import { deleteProduct } from "../utils/ajax/ajaxProducts.js"
 import { deleteUser } from "../utils/ajax/ajaxUsers.js"
 
 
 
-export default function MediaCard({ variabel, object,  onDeleteProduct, onDeleteUser}) {
-
-	const {handleOpen} = useContext(RefContext)
+export default function MediaCard({ variabel, object, onDeleteProduct, onDeleteUser }) {
+	const { handleOpen } = useContext(RefContext)
 
 	function checkObject(string) {
 		if (variabel === string) {
@@ -31,20 +26,6 @@ export default function MediaCard({ variabel, object,  onDeleteProduct, onDelete
 	let isUser = checkObject('users')
 	let isAddUser = checkObject('add-user')
 	let isAddProducts = checkObject('add-products')
-	let isEditProduct = checkObject('edit-product')
-	let isEditUsers = checkObject('edit-users')
-
-	function handleAdd() {
-		if (isAddUser) {
-			addProduct()
-		}
-	}
-
-
-	function handleEdit(id) {
-
-
-	}
 
 
 	function handleDelete(id) {
@@ -58,7 +39,6 @@ export default function MediaCard({ variabel, object,  onDeleteProduct, onDelete
 	}
 
 	return (
-
 
 		<Card sx={{ maxWidth: 300, border: 1, display: 'flex', flexDirection: 'column', justifyContent: "space-between" }} >
 

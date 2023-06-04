@@ -22,7 +22,7 @@ const Grid = styled.div`
 function ViewUsers() {
     const [users, setUsers] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
-    const {updateCount} = useContext(RefContext)
+    const { updateCount } = useContext(RefContext)
 
     async function getAllUsers() {
         setErrorMessage("");
@@ -42,13 +42,6 @@ function ViewUsers() {
         setUsers((prevUsers) => prevUsers.filter((users) => users.id !== id));
     }
 
-    async function handleEditUser(id, name, password) {
-        try {
-            await editUser(id, name, password);
-        } catch (error) {
-            setErrorMessage(error.message);
-        }
-    }
 
     return (
         <>
@@ -73,7 +66,7 @@ function ViewUsers() {
             {errorMessage !== "" ? (
                 <p> Ett fel har inträffat! {errorMessage} </p>
             ) : null}
-            <Overlay page="users" />
+            <Overlay />
         </>
     );
 }

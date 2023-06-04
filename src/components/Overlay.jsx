@@ -1,12 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { RefContext } from "./Root";
 import { useRef } from "react";
-import { editProduct } from "../utils/ajax/ajaxProducts";
 import validateInputs from "../utils/validateForm";
 import { useRecoilState } from "recoil";
 import idAtom from "../recoil/idAtom";
-
 
 
 const StyledModal = styled.dialog`
@@ -17,12 +15,9 @@ const StyledModal = styled.dialog`
     transform: translate(-50%, -50%);
 `;
 
-function Overlay({ page }) {
+function Overlay() {
     const { modal } = useContext(RefContext);
-    const { handleOpen } = useContext(RefContext);
-    const { handleAddClick } = useContext(RefContext);
     const { currentView } = useContext(RefContext);
-    const { setCurrentView } = useContext(RefContext);
     const { handleSave } = useContext(RefContext);
 
     const nameInput = useRef(null);
@@ -34,20 +29,12 @@ function Overlay({ page }) {
 
     const [id, setId] = useRecoilState(idAtom)
 
-    useEffect(() => {
-        console.log(modal);
-        console.log("currentView: ", currentView);
-    }, []);
-
-
-	let body = {}
+    let body = {}
 
 
     function testValidity() {
         let validInputs = validateInputs(currentView, body, nameInput, priceInput, urlInput, tagsInput, usernameInput, passwordInput)
 
-        console.log('validInputs är: ', validInputs)
-        console.log('body är: ', body)
 
         if (validInputs) {
             handleSave(body)
@@ -55,13 +42,6 @@ function Overlay({ page }) {
     }
 
 
-    function handleEditClick() {
-        if (page === "products") {
-            editProduct(id);
-        } else if (page === "users") {
-            editUser(id);
-        }
-    }
     return (
         <StyledModal
             ref={modal}
@@ -79,67 +59,67 @@ function Overlay({ page }) {
         >
 
             {currentView === "products" && (
-				<>
+                <>
 
-            	<h1> {id ? 'Ändra produkt' : 'Lägg till produkt'}</h1>
-                <form>
-                    <div>
-                        <p>Namn:</p>
-                        <input
-                            type="text"
-                            ref={nameInput}
-                        />
-                    </div>
+                    <h1> {id ? 'Ändra produkt' : 'Lägg till produkt'}</h1>
+                    <form>
+                        <div>
+                            <p>Namn:</p>
+                            <input
+                                type="text"
+                                ref={nameInput}
+                            />
+                        </div>
 
-                    <div>
-                        <p>Pris:</p>
-                        <input
-                            type="text"
-                            ref={priceInput}
-                        />
-                    </div>
+                        <div>
+                            <p>Pris:</p>
+                            <input
+                                type="text"
+                                ref={priceInput}
+                            />
+                        </div>
 
-                    <div>
-                        <p>Bild:</p>
-                        <input
-                            type="text"
-                            ref={urlInput}
-                        />
-                    </div>
+                        <div>
+                            <p>Bild:</p>
+                            <input
+                                type="text"
+                                ref={urlInput}
+                            />
+                        </div>
 
-                    <div>
-                        <p> Taggar: </p>
-                        <input
-                            type="text"
-                            ref={tagsInput}
-                        />
-                    </div>
-                </form>
-				</>
+                        <div>
+                            <p> Taggar: </p>
+                            <input
+                                type="text"
+                                ref={tagsInput}
+                            />
+                        </div>
+                    </form>
+                </>
             )}
             {currentView === "users" && (
-				<>
-				<h1>{id ? 'Ändra användare' : 'Lägg till användare'}</h1>
-                <form>
-                    <div>
-                        <p>Användarnamn:</p>
-                        <input
-                            type="text"
-                            ref={usernameInput}                        />
-                    </div>
+                <>
+                    <h1>{id ? 'Ändra användare' : 'Lägg till användare'}</h1>
+                    <form>
+                        <div>
+                            <p>Användarnamn:</p>
+                            <input
+                                type="text"
+                                ref={usernameInput} />
+                        </div>
 
-                    <div>
-                        <p>Lösenord:</p>
-                        <input
-                            type="text"
-                            ref={passwordInput}                        />
-                    </div>
+                        <div>
+                            <p>Lösenord:</p>
+                            <input
+                                type="text"
+                                ref={passwordInput} />
+                        </div>
 
-                </form>
-			</>
+                    </form>
+                </>
             )}
 
-			<button onClick={(e) => testValidity(e)}> Spara </button>
+            <button onClick={(e) => testValidity(e)}> Spara </button>
         </StyledModal>
     );
 }

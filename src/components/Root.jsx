@@ -1,6 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
-import { useRef, useEffect, createContext, useState } from "react";
-import Overlay from "./Overlay.jsx";
+import { useRef, createContext, useState } from "react";
 import styled from "styled-components";
 import { addProduct, editProduct } from "../utils/ajax/ajaxProducts.js";
 import { addUser, editUser } from "../utils/ajax/ajaxUsers.js";
@@ -12,8 +11,8 @@ const Main = styled.main`
 `;
 
 export const RefContext = createContext();
+
 const Root = () => {
-    // sätter upp vår context
     const modal = useRef(null);
 
     const [currentView, setCurrentView] = useState("products");
@@ -27,46 +26,38 @@ const Root = () => {
     }
 
     const handleOpen = (variabel, object) => {
-        console.log('object.id: ', object?.id)
-        console.log('recoil id: ', id)
-
         setId(object?.id)
-
         modal.current.showModal();
-		setVariable(variabel)
+        setVariable(variabel)
     };
 
-	const handleSave = (body) => {
+    const handleSave = (body) => {
 
-		console.log(variable)
-		console.log('id:t i handleSave är: ', id)
+        if (variable === 'add-products') {
+            addProduct(body.name, body.price, body.image, body.tags)
 
-		if (variable === 'add-products') {
-            console.log('Lägg till produkt');
-			addProduct(body.name, body.price, body.image, body.tags)
-		} else if (variable === 'products') {
-            console.log('Ändra produkt');
-			editProduct(id, body.name, body.price, body.image, body.tags)
-		} else if (variable === 'add-user') {
-            console.log('Lägg till användare');
+        } else if (variable === 'products') {
+            editProduct(id, body.name, body.price, body.image, body.tags)
+
+        } else if (variable === 'add-user') {
             addUser(body.name, body.password)
-		} else {
-			console.log('Ändra användare');
+
+        } else {
             editUser(id, body.name, body.password)
-		}
+
+        }
         updateViewProductsComponent()
         modal.current.close();
-	}
+    }
 
     const handleAddClick = () => {
-        // Skicka POST request
         modal.current.close();
     };
 
     let modalObject = {
         modal,
         handleOpen,
-		handleSave,
+        handleSave,
         handleAddClick,
         currentView,
         setCurrentView,

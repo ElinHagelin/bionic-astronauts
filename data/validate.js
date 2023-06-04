@@ -1,12 +1,9 @@
 function isValidUser(u) {
-	console.log("isValidUser 1")
 	if (typeof u !== "object") {
 		return false
 	} else if (u === null) {
 		return false
 	}
-
-	console.log("isValidUser 2")
 
 	let nameIsValid = typeof u.name === "string"
 	nameIsValid = nameIsValid && u.name !== ""
@@ -17,20 +14,17 @@ function isValidUser(u) {
 	if (!nameIsValid || !passwordIsValid) {
 		return false
 	}
-	console.log("isValidUser 3")
+
 	return true
 }
 
 function isValidProduct(p) {
-	console.log("isValidProduct 1")
 
 	if (typeof p !== "object") {
 		return false
 	} else if (p === null) {
 		return false
 	}
-
-	console.log("isValidProduct 2")
 
 	let nameIsValid = typeof p.name === "string"
 	nameIsValid = nameIsValid && p.name !== ""
@@ -39,8 +33,6 @@ function isValidProduct(p) {
 	let imageIsValid = typeof p.image === "string"
 	imageIsValid = imageIsValid && p.image !== ""
 	let tagsAreValid = Array.isArray(p.tags)
-
-	console.log("tagsAreValid är: ", tagsAreValid)
 
 	if (
 		!nameIsValid ||
@@ -51,7 +43,6 @@ function isValidProduct(p) {
 		return false
 	}
 
-	console.log("isValidProduct 3")
 	return true
 }
 
