@@ -2,7 +2,6 @@ import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
-import { cors } from 'cors'
 
 function getDb() {
 	const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -12,4 +11,4 @@ function getDb() {
 	return db
 }
 
-export { getDb, }
+export { getDb }
