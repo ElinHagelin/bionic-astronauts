@@ -5,6 +5,7 @@ import { addProduct, editProduct } from "../utils/ajax/ajaxProducts.js";
 import { addUser, editUser } from "../utils/ajax/ajaxUsers.js";
 import { useRecoilState } from "recoil";
 import idAtom from "../recoil/idAtom.js";
+import "../index.css";
 
 const Main = styled.main`
     position: relative;
