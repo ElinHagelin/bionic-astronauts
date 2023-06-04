@@ -76,6 +76,10 @@ button:focus-visible {
   margin: 1em;
 }
 
+.nav-links {
+  margin: 0em 1em;
+}
+
 nav {
   margin: 1em;
 }
