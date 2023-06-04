@@ -38,8 +38,18 @@ function Overlay() {
 
         if (validInputs) {
             handleSave(body)
+            clearInputFields()
         }
     }
+
+    const clearInputFields = () => {
+        nameInput.current.value = '';
+        priceInput.current.value = '';
+        urlInput.current.value = '';
+        tagsInput.current.value = '';
+        usernameInput.current.value = '';
+        passwordInput.current.value = '';
+    };
 
 
     return (
